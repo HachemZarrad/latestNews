@@ -1,6 +1,6 @@
 package com.example.latestnews.Models
 
-class News {
+class Article {
     var id: String? = null
     var title: String? = null
     var external_link: String? = null
