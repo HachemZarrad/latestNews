@@ -85,8 +85,8 @@
 
                 <ImageView
                     android:id="@+id/nextIcon"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="15dp"
                     android:layout_weight="1"
