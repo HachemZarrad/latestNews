@@ -10,6 +10,8 @@ class DetailedNews : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed_news)
 
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()?.setHomeAsUpIndicator(R.drawable.back_button)
 
         val bundle: Bundle?= intent.extras
         val imageUrl = bundle!!.getString("image")
