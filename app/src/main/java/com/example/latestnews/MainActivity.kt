@@ -1,6 +1,7 @@
 package com.example.latestnews
 
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -55,7 +56,12 @@ class MainActivity : AppCompatActivity() {
                 dialog.dismiss()
                 adapter.setOnItemClickListener(object : ArticleAdapter.onItemClickListener{
                     override fun onItemClick(position: Int) {
-                            Toast.makeText(this@MainActivity, "You clicked on item $position", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@MainActivity,DetailedNews::class.java)
+                        intent.putExtra("image",list[position].thumbnail)
+                        intent.putExtra("date",list[position].publish_date)
+                        intent.putExtra("title",list[position].title)
+                        intent.putExtra("description",list[position].html)
+                        startActivity(intent)
                     }
                 })
             }
