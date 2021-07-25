@@ -3,6 +3,7 @@ package com.example.latestnews
 import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.latestnews.Adapters.ArticleAdapter
 import com.example.latestnews.Common.Common
@@ -42,17 +43,25 @@ class MainActivity : AppCompatActivity() {
 
         mService.getArticlesList().enqueue(object : Callback<MutableList<Article>> {
             override fun onFailure(call: Call<MutableList<Article>>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                TODO("not implemented")
             }
 
             override fun onResponse(call: Call<MutableList<Article>>, response: Response<MutableList<Article>>) {
-                adapter = ArticleAdapter(baseContext, response.body() as MutableList<Article>)
+                var list = response.body() as MutableList<Article>
+                adapter = ArticleAdapter(baseContext, list)
                 adapter.notifyDataSetChanged()
                 recyclerArticlesList.adapter = adapter
 
                 dialog.dismiss()
+                adapter.setOnItemClickListener(object : ArticleAdapter.onItemClickListener{
+                    override fun onItemClick(position: Int) {
+                            Toast.makeText(this@MainActivity, "You clicked on item $position", Toast.LENGTH_SHORT).show()
+                    }
+                })
             }
 
         })
     }
+
+
 }

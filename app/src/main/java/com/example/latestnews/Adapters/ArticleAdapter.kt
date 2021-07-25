@@ -15,9 +15,19 @@ import kotlinx.android.synthetic.main.layout_article_item.view.*
 
 class ArticleAdapter(private val context: Context, private val articlesList: MutableList<Article>): RecyclerView.Adapter<ArticleAdapter.MyViewHolder>() {
 
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+        fun onItemClick(adapterPosition: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         var itemView = LayoutInflater.from(context).inflate(R.layout.layout_article_item, parent, false)
-        return MyViewHolder(itemView)
+        return MyViewHolder(itemView, mListener)
     }
 
     override fun getItemCount(): Int {
@@ -30,7 +40,7 @@ class ArticleAdapter(private val context: Context, private val articlesList: Mut
         holder.title.text = articlesList[position].title
     }
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         var image : ImageView
         var date : TextView
         var title : TextView
@@ -39,6 +49,9 @@ class ArticleAdapter(private val context: Context, private val articlesList: Mut
             image = itemView.image
             date = itemView.date
             title = itemView.title
+            itemView.setOnClickListener{
+                listener.onItemClick(adapterPosition)
+            }
         }
     }
 
