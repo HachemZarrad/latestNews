@@ -1,11 +1,15 @@
 package com.example.latestnews
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
+import androidx.annotation.RequiresApi
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detailed_news.*
 
 class DetailedNews : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed_news)
@@ -23,7 +27,12 @@ class DetailedNews : AppCompatActivity() {
         Picasso.get().load(imageUrl).into(image)
         date.text = publishDate
         theTitle.text = articleTitle
-        description.text = articleDescription
+
+        description.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(articleDescription, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            Html.fromHtml(articleDescription,5)
+        }
 
     }
 }
