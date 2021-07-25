@@ -13,9 +13,6 @@ import com.example.latestnews.Models.Article
 import com.example.latestnews.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_article_item.view.*
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class ArticleAdapter(private val context: Context, private val articlesList: MutableList<Article>): RecyclerView.Adapter<ArticleAdapter.MyViewHolder>() {
