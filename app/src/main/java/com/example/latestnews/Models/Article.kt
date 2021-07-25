@@ -1,5 +1,9 @@
 package com.example.latestnews.Models
 
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
+
 class Article {
     var id: String? = null
     var title: String? = null
@@ -14,4 +18,20 @@ class Article {
     var html: String? = null
     var publish_date: String? = null
     var place: String? = null
+
+    fun parseDate(time: String?): String? {
+        val inputPattern = "yyyy-MM-dd HH:mm:ss"
+        val outputPattern = "yyyy MMM dd"
+        val inputFormat = SimpleDateFormat(inputPattern)
+        val outputFormat = SimpleDateFormat(outputPattern)
+        var date: Date? = null
+        var str: String? = null
+        try {
+            date = inputFormat.parse(time)
+            str = outputFormat.format(date)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+        return str
+    }
 }

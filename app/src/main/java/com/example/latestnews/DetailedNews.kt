@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import androidx.annotation.RequiresApi
+import com.example.latestnews.Models.Article
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detailed_news.*
 
@@ -25,7 +26,10 @@ class DetailedNews : AppCompatActivity() {
 
 
         Picasso.get().load(imageUrl).into(image)
-        date.text = publishDate
+
+        val article = Article()
+        date.text = article.parseDate(publishDate)
+
         theTitle.text = articleTitle
 
         description.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
