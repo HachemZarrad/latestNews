@@ -1,5 +1,6 @@
 package com.example.latestnews
 
+import android.app.ActionBar
 import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()?.setHomeAsUpIndicator(R.drawable.custom_back_button)
+
+
 
         mService = Common.retrofitService
 
