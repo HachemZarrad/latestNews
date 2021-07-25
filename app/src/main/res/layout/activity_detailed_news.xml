@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="600px"
-        android:background="@color/black">
+        >
 
 
         <ImageView
@@ -64,7 +64,7 @@
 
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/theTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
