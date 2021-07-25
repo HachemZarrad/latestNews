@@ -47,8 +47,9 @@
                     android:id="@+id/dateIcon"
                     android:layout_width="30dp"
                     android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/next"
+                    android:src="@drawable/calendar"
                     />
 
                 <TextView
