@@ -10,7 +10,7 @@
     android:background="@color/background">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMovieList"
+        android:id="@+id/recyclerArticlesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
